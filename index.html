@@ -6,173 +6,242 @@
 <title>SentineIA — Sua Dose Diária de IA, Segurança e Tech</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#080e1a;--bg2:#0d1528;--bg3:#111e36;--cyan:#00d4ff;--cyan2:#00a8cc;--gold:#c9a227;--text:#e8edf5;--text2:#8fa3c0;--border:#1e3050;--card:#0d1a2e;}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
-::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--cyan2);border-radius:3px}
-header{position:sticky;top:0;z-index:100;background:rgba(8,14,26,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
-.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px;}
-.logo-wrap{display:flex;align-items:center;gap:12px;cursor:pointer;}
-.logo-img{height:48px;width:48px;object-fit:cover;border-radius:8px;}
-.logo-text{display:flex;flex-direction:column;line-height:1.15;}
-.logo-name{font-family:'Syne',sans-serif;font-size:1.45rem;font-weight:800;color:var(--text);}
+:root{
+  --bg:#060d1a;--bg2:#0b1425;--bg3:#101e35;
+  --cyan:#00d4ff;--cyan2:#00a8cc;--gold:#c9a227;
+  --text:#edf2f9;--text2:#8fa3c0;--border:#1a2d4a;--card:#0c1829;
+  --radius:14px;--radius-sm:8px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:17px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--cyan2);border-radius:3px}
+
+/* ── HEADER ── */
+header{position:sticky;top:0;z-index:100;background:rgba(6,13,26,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.header-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 2.5rem;}
+.logo-wrap{display:flex;align-items:center;gap:14px;cursor:pointer;}
+.logo-img{height:52px;width:52px;object-fit:cover;border-radius:10px;}
+.logo-text{display:flex;flex-direction:column;line-height:1.2;}
+.logo-name{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--text);letter-spacing:-.02em;}
 .logo-name span{color:var(--cyan);}
-.logo-sub{font-size:.62rem;color:var(--text2);letter-spacing:.09em;text-transform:uppercase;}
-nav{display:flex;align-items:center;gap:.2rem;}
-nav button{background:none;border:none;color:var(--text2);font-size:.8rem;padding:.4rem .85rem;border-radius:6px;transition:all .2s;text-transform:uppercase;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;}
-nav button:hover{color:var(--cyan);background:rgba(0,212,255,.08);}
-.nav-cta{background:var(--cyan)!important;color:#000!important;font-weight:700!important;padding:.45rem 1.2rem!important;border-radius:6px!important;}
-.nav-cta:hover{background:var(--cyan2)!important;}
+.logo-sub{font-size:.65rem;color:var(--text2);letter-spacing:.1em;text-transform:uppercase;margin-top:1px;}
+nav{display:flex;align-items:center;gap:.3rem;}
+nav button{background:none;border:none;color:var(--text2);font-size:.82rem;padding:.5rem 1rem;border-radius:var(--radius-sm);transition:all .2s;text-transform:uppercase;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:.04em;}
+nav button:hover{color:var(--cyan);background:rgba(0,212,255,.07);}
+.nav-cta{background:var(--cyan)!important;color:#000!important;font-weight:700!important;padding:.5rem 1.4rem!important;}
+.nav-cta:hover{background:var(--cyan2)!important;transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,212,255,.3)!important;}
 .menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;}
-.menu-toggle span{width:22px;height:2px;background:var(--text);border-radius:2px;display:block;}
-.btn{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:.85rem;padding:.65rem 1.5rem;border-radius:8px;border:none;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;}
-.btn-p{background:var(--cyan);color:#000;}.btn-p:hover{background:var(--cyan2);transform:translateY(-2px);}
-.btn-o{background:transparent;color:var(--cyan);border:1px solid var(--cyan)!important;}.btn-o:hover{background:rgba(0,212,255,.08);transform:translateY(-2px);}
-.btn-d{background:var(--card);color:var(--text2);border:1px solid var(--border)!important;}.btn-d:hover{border-color:var(--cyan)!important;color:var(--cyan);}
-.wa-float{position:fixed;bottom:28px;right:28px;z-index:90;width:54px;height:54px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);cursor:pointer;transition:transform .2s;border:none;}
-.wa-float:hover{transform:scale(1.1);}.wa-float svg{width:27px;height:27px;fill:#fff;}
-.toast{position:fixed;bottom:92px;right:28px;z-index:91;background:var(--bg2);border:1px solid var(--cyan);border-radius:10px;padding:.7rem 1.2rem;font-size:.81rem;color:var(--text);display:none;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(0,212,255,.15);}
-.toast.show{display:flex;}
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 2rem 1.5rem;}
-.fi{max-width:1200px;margin:0 auto;}
-.fg2{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}
-.fb p{font-size:.81rem;color:var(--text2);line-height:1.7;margin-top:.75rem;}
-.fc h4{font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text);margin-bottom:.75rem;}
-.fc ul{list-style:none;display:flex;flex-direction:column;gap:.38rem;}
-.fc ul li button{font-size:.79rem;color:var(--text2);background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:color .2s;padding:0;text-align:left;}
-.fc ul li button:hover{color:var(--cyan);}
-.fbot{border-top:1px solid var(--border);padding-top:1.25rem;display:flex;align-items:center;justify-content:space-between;font-size:.74rem;color:var(--text2);flex-wrap:wrap;gap:.5rem;}
-@media(max-width:600px){nav{display:none;}nav.open{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:1rem;z-index:99;}.menu-toggle{display:flex;}.fg2{grid-template-columns:1fr;}}
-</style>
-<style>
-.ticker-wrap{background:var(--bg3);border-bottom:1px solid var(--border);overflow:hidden;padding:10px 0;}
-.ticker-inner{display:flex;align-items:center;white-space:nowrap;animation:ticker 50s linear infinite;}
-@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.ti{display:inline-flex;align-items:center;gap:8px;padding:0 2rem;font-size:.77rem;color:var(--text2);}
-.tdot{width:4px;height:4px;border-radius:50%;background:var(--cyan);flex-shrink:0;}
-.tlbl{font-family:'Syne',sans-serif;font-size:.68rem;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:.1em;margin-right:4px;}
+.menu-toggle span{width:24px;height:2px;background:var(--text);border-radius:2px;display:block;}
+
+/* ── HERO ── */
 .hero{position:relative;background:var(--bg2);border-bottom:1px solid var(--border);overflow:hidden;}
-.hero-banner{width:100%;max-height:400px;object-fit:cover;display:block;opacity:.8;}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,14,26,.94) 40%,rgba(8,14,26,.2));display:flex;align-items:center;padding:0 4rem;}
-.hero-content{max-width:540px;}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.3);color:var(--cyan);font-size:.7rem;font-weight:600;padding:4px 14px;border-radius:20px;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.1em;}
-.blink{width:7px;height:7px;background:var(--cyan);border-radius:50%;animation:bl 1s infinite;display:inline-block;}
+.hero-banner{width:100%;max-height:480px;object-fit:cover;display:block;opacity:.75;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,13,26,.96) 38%,rgba(6,13,26,.15));display:flex;align-items:center;padding:0 5rem;}
+.hero-content{max-width:580px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.3);color:var(--cyan);font-size:.72rem;font-weight:700;padding:5px 16px;border-radius:30px;margin-bottom:1.25rem;text-transform:uppercase;letter-spacing:.12em;}
+.blink{width:8px;height:8px;background:var(--cyan);border-radius:50%;animation:bl 1s infinite;display:inline-block;}
 @keyframes bl{0%,100%{opacity:1}50%{opacity:0}}
-.hero h1{font-family:'Syne',sans-serif;font-size:clamp(1.5rem,2.8vw,2.3rem);font-weight:800;line-height:1.2;margin-bottom:1rem;}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:800;line-height:1.15;margin-bottom:1.1rem;letter-spacing:-.02em;}
 .hero h1 span{color:var(--cyan);}
-.hero-desc{color:var(--text2);font-size:.92rem;line-height:1.75;margin-bottom:1.5rem;}
+.hero-desc{color:var(--text2);font-size:1.05rem;line-height:1.8;margin-bottom:1.75rem;}
 .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
-main{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;}
-.intro-strip{background:linear-gradient(135deg,rgba(0,212,255,.04),var(--bg2));border:1px solid rgba(0,212,255,.15);border-radius:16px;padding:2rem 2.5rem;margin-bottom:2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;}
-.intro-strip h2{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;margin-bottom:.6rem;}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:.88rem;padding:.75rem 1.75rem;border-radius:var(--radius-sm);border:none;cursor:pointer;transition:all .22s;font-family:'Inter',sans-serif;letter-spacing:.02em;}
+.btn-p{background:var(--cyan);color:#000;}.btn-p:hover{background:var(--cyan2);transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,212,255,.25);}
+.btn-o{background:transparent;color:var(--cyan);border:1.5px solid var(--cyan)!important;}.btn-o:hover{background:rgba(0,212,255,.08);transform:translateY(-2px);}
+.btn-d{background:var(--card);color:var(--text2);border:1px solid var(--border)!important;}.btn-d:hover{border-color:var(--cyan)!important;color:var(--cyan);}
+
+/* ── TICKER ── */
+.ticker-wrap{background:var(--bg3);border-bottom:1px solid var(--border);overflow:hidden;padding:11px 0;}
+.ticker-inner{display:flex;align-items:center;white-space:nowrap;animation:ticker 55s linear infinite;}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ti{display:inline-flex;align-items:center;gap:10px;padding:0 2.5rem;font-size:.8rem;color:var(--text2);}
+.tdot{width:5px;height:5px;border-radius:50%;background:var(--cyan);flex-shrink:0;}
+.tlbl{font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:.1em;margin-right:4px;}
+
+/* ── MAIN ── */
+main{max-width:1280px;margin:0 auto;padding:3rem 2.5rem;}
+
+/* ── INTRO STRIP ── */
+.intro-strip{background:linear-gradient(135deg,rgba(0,212,255,.05) 0%,rgba(11,20,37,.8) 100%);border:1px solid rgba(0,212,255,.15);border-radius:20px;padding:2.5rem 3rem;margin-bottom:3rem;display:grid;grid-template-columns:1fr auto;gap:2.5rem;align-items:center;}
+.intro-strip h2{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:.75rem;letter-spacing:-.01em;}
 .intro-strip h2 span{color:var(--cyan);}
-.intro-strip p{font-size:.88rem;color:var(--text2);line-height:1.75;}
-.intro-pillars{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem;}
-.pillar{display:flex;align-items:center;gap:6px;font-size:.77rem;color:var(--text2);background:var(--bg3);border:1px solid var(--border);padding:4px 12px;border-radius:20px;}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2.5rem;}
-.sc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center;}
-.sn{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--cyan);display:block;margin-bottom:.25rem;}
-.sl2{font-size:.74rem;color:var(--text2);line-height:1.4;}
-.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);}
-.st{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;display:flex;align-items:center;gap:8px;}
-.st::before{content:"";width:4px;height:18px;background:var(--cyan);border-radius:2px;}
-.sl{font-size:.78rem;color:var(--cyan);font-weight:500;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
-.featured-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:2.5rem;transition:all .3s;cursor:pointer;}
-.featured-card:hover{border-color:var(--cyan);box-shadow:0 12px 40px rgba(0,212,255,.1);}
-.fi2{min-height:260px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;}
-.fb2{position:absolute;top:14px;left:14px;background:var(--cyan);color:#000;font-size:.68rem;font-weight:700;padding:4px 14px;border-radius:20px;text-transform:uppercase;}
-.fbd{padding:2rem;display:flex;flex-direction:column;justify-content:center;}
-.fc2{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--cyan);margin-bottom:.6rem;}
-.fbd h2{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;line-height:1.3;margin-bottom:1rem;color:var(--text);}
-.fbd p{font-size:.87rem;color:var(--text2);line-height:1.75;margin-bottom:1.25rem;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
-.fm{display:flex;align-items:center;justify-content:space-between;font-size:.74rem;color:var(--text2);}
-.frb{color:var(--cyan);font-weight:600;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:.82rem;}
-.filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.75rem;}
-.fbtn{background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-size:.77rem;font-weight:500;padding:.38rem 1rem;border-radius:20px;cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:.05em;font-family:'Inter',sans-serif;}
+.intro-strip p{font-size:.97rem;color:var(--text2);line-height:1.85;}
+.intro-pillars{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.1rem;}
+.pillar{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--text2);background:rgba(255,255,255,.03);border:1px solid var(--border);padding:6px 14px;border-radius:30px;font-weight:500;}
+.intro-ctas{display:flex;flex-direction:column;gap:.75rem;flex-shrink:0;}
+
+/* ── STATS ── */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-bottom:3rem;}
+.sc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center;transition:border-color .2s;}
+.sc:hover{border-color:rgba(0,212,255,.3);}
+.sn{font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;color:var(--cyan);display:block;margin-bottom:.3rem;letter-spacing:-.02em;}
+.sl2{font-size:.8rem;color:var(--text2);line-height:1.5;}
+
+/* ── SECTION HEADERS ── */
+.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;padding-bottom:.9rem;border-bottom:1px solid var(--border);}
+.st{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;display:flex;align-items:center;gap:10px;}
+.st::before{content:"";width:5px;height:20px;background:var(--cyan);border-radius:3px;}
+.sl{font-size:.8rem;color:var(--cyan);font-weight:600;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+
+/* ── TAG CLOUD ── */
+.tag-cloud-section{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem 2rem;margin-bottom:3rem;}
+.tag-cloud-title{font-family:'Syne',sans-serif;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--text2);margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
+.tag-cloud-title::before{content:"🔍";font-size:.9rem;}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:.6rem;}
+.tag-pill{background:var(--bg);border:1.5px solid var(--border);color:var(--text2);padding:.45rem 1.1rem;border-radius:30px;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;}
+.tag-pill:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,.06);transform:translateY(-1px);}
+.tag-pill.tag-active{background:rgba(0,212,255,.12);border-color:var(--cyan);color:var(--cyan);}
+.tag-pill .tag-count{font-size:.68rem;opacity:.7;margin-left:4px;}
+
+/* ── FEATURED ── */
+.featured-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1fr 1.1fr;margin-bottom:3rem;transition:all .3s;cursor:pointer;}
+.featured-card:hover{border-color:rgba(0,212,255,.4);box-shadow:0 16px 50px rgba(0,212,255,.08);}
+.fi2{min-height:300px;background:linear-gradient(135deg,var(--bg3),var(--bg2));display:flex;align-items:center;justify-content:center;font-size:6rem;position:relative;}
+.fb2{position:absolute;top:16px;left:16px;background:var(--cyan);color:#000;font-size:.7rem;font-weight:800;padding:5px 16px;border-radius:30px;text-transform:uppercase;letter-spacing:.08em;}
+.fbd{padding:2.5rem;display:flex;flex-direction:column;justify-content:center;}
+.fc2{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan);margin-bottom:.75rem;}
+.fbd h2{font-family:'Syne',sans-serif;font-size:1.55rem;font-weight:800;line-height:1.25;margin-bottom:1rem;color:var(--text);letter-spacing:-.01em;}
+.fbd p{font-size:.93rem;color:var(--text2);line-height:1.8;margin-bottom:1.5rem;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
+.fm{display:flex;align-items:center;justify-content:space-between;font-size:.78rem;color:var(--text2);}
+.frb{color:var(--cyan);font-weight:700;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:.85rem;}
+.feat-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem;}
+.feat-tag{background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);color:var(--cyan);padding:2px 10px;border-radius:20px;font-size:.7rem;font-weight:600;cursor:pointer;}
+
+/* ── FILTER BAR ── */
+.filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem;}
+.fbtn{background:var(--bg3);border:1.5px solid var(--border);color:var(--text2);font-size:.78rem;font-weight:600;padding:.45rem 1.1rem;border-radius:30px;cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:.06em;font-family:'Inter',sans-serif;}
 .fbtn:hover,.fbtn.on{background:rgba(0,212,255,.1);border-color:var(--cyan);color:var(--cyan);}
-.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-bottom:2rem;}
-.nc{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .3s;cursor:pointer;display:flex;flex-direction:column;}
-.nc:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,212,255,.08);}
-.nc-img{width:100%;height:170px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;}
-.nc-badge{position:absolute;top:10px;left:10px;background:rgba(0,212,255,.9);color:#000;font-size:.63rem;font-weight:700;padding:3px 10px;border-radius:20px;text-transform:uppercase;}
-.nc-body{padding:1.2rem;flex:1;display:flex;flex-direction:column;}
-.nc-cat{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--cyan);margin-bottom:.4rem;}
-.nc h3{font-family:'Syne',sans-serif;font-size:.93rem;font-weight:700;line-height:1.4;margin-bottom:.65rem;color:var(--text);}
-.nc p{font-size:.81rem;color:var(--text2);line-height:1.7;flex:1;margin-bottom:.85rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
-.nc-meta{display:flex;align-items:center;justify-content:space-between;font-size:.71rem;color:var(--text2);border-top:1px solid var(--border);padding-top:.7rem;}
-.rmbtn{color:var(--cyan);font-weight:600;font-size:.74rem;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+
+/* ── NEWS GRID ── */
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.75rem;margin-bottom:2rem;}
+.nc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .3s;cursor:pointer;display:flex;flex-direction:column;}
+.nc:hover{border-color:rgba(0,212,255,.35);transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,212,255,.07);}
+.nc-img{width:100%;height:185px;background:linear-gradient(135deg,var(--bg3),var(--bg2));display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;}
+.nc-badge{position:absolute;top:12px;left:12px;background:rgba(0,212,255,.92);color:#000;font-size:.65rem;font-weight:800;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.06em;}
+.nc-body{padding:1.4rem;flex:1;display:flex;flex-direction:column;}
+.nc-cat{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan);margin-bottom:.5rem;}
+.nc h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;line-height:1.4;margin-bottom:.75rem;color:var(--text);letter-spacing:-.01em;}
+.nc p{font-size:.85rem;color:var(--text2);line-height:1.75;flex:1;margin-bottom:1rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.nc-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.9rem;}
+.nc-tag{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text2);padding:2px 9px;border-radius:20px;font-size:.68rem;font-weight:500;cursor:pointer;transition:all .15s;}
+.nc-tag:hover{border-color:var(--cyan);color:var(--cyan);}
+.nc-meta{display:flex;align-items:center;justify-content:space-between;font-size:.74rem;color:var(--text2);border-top:1px solid var(--border);padding-top:.75rem;}
+.rmbtn{color:var(--cyan);font-weight:700;font-size:.76rem;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
 .load-wrap{text-align:center;margin-bottom:2rem;}
-.video-section{margin:2.5rem 0;background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
-.video-head{padding:1.4rem 2rem .75rem;}
-.video-head h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;}
-.video-head p{font-size:.77rem;color:var(--text2);margin-top:4px;}
+
+/* ── ACTIVE TAG BANNER ── */
+.tag-filter-banner{display:none;background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.2);border-radius:var(--radius-sm);padding:.75rem 1.25rem;margin-bottom:1.25rem;font-size:.85rem;color:var(--cyan);align-items:center;justify-content:space-between;}
+.tag-filter-banner.show{display:flex;}
+.tag-clear{background:none;border:none;color:var(--text2);cursor:pointer;font-size:.8rem;font-family:'Inter',sans-serif;}
+.tag-clear:hover{color:var(--cyan);}
+
+/* ── VIDEO ── */
+.video-section{margin:3rem 0;background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.video-head{padding:1.75rem 2.5rem 1rem;}
+.video-head h3{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;margin-bottom:.25rem;}
+.video-head p{font-size:.85rem;color:var(--text2);}
 .video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#000;}
 .video-wrap video{position:absolute;inset:0;width:100%;height:100%;}
-.content-layout{display:grid;grid-template-columns:1fr 300px;gap:2rem;}
-.sidebar{display:flex;flex-direction:column;gap:1.5rem;}
-.sb-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem;}
-.sb-title{font-family:'Syne',sans-serif;font-size:.83rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text);margin-bottom:.9rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);}
-.sb-list{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
-.sb-list li{font-size:.79rem;color:var(--text2);padding-bottom:.7rem;border-bottom:1px solid var(--border);cursor:pointer;transition:color .2s;}
+
+/* ── LAYOUT ── */
+.content-layout{display:grid;grid-template-columns:1fr 320px;gap:2.5rem;}
+.sidebar{display:flex;flex-direction:column;gap:1.75rem;}
+.sb-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;}
+.sb-title{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--text);margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+.sb-list{list-style:none;display:flex;flex-direction:column;gap:.8rem;}
+.sb-list li{font-size:.82rem;color:var(--text2);padding-bottom:.8rem;border-bottom:1px solid var(--border);cursor:pointer;transition:color .2s;}
 .sb-list li:last-child{border:none;padding-bottom:0;}.sb-list li:hover{color:var(--cyan);}
-.sb-list li strong{display:block;color:var(--text);margin-bottom:2px;font-size:.81rem;}
-.tag{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:3px 11px;border-radius:20px;font-size:.71rem;cursor:pointer;display:inline-block;margin:3px;font-family:'Inter',sans-serif;}
-.tag:hover{border-color:var(--cyan);color:var(--cyan);}
-/* HOOKS */
-.hook-box{border-radius:12px;padding:1.2rem 1.4rem;margin-top:1.25rem;border-left:4px solid;font-size:.85rem;line-height:1.75;color:var(--text2);}
+.sb-list li strong{display:block;color:var(--text);margin-bottom:3px;font-size:.85rem;font-weight:600;}
+
+/* ── HOOKS ── */
+.hook-box{border-radius:var(--radius);padding:1.4rem 1.75rem;margin-top:1.5rem;border-left:4px solid;font-size:.88rem;line-height:1.8;color:var(--text2);}
 .hA{border-color:var(--cyan);background:rgba(0,212,255,.05);}.hB{border-color:var(--gold);background:rgba(201,162,39,.05);}.hC{border-color:#a855f7;background:rgba(168,85,247,.05);}
-.h-label{font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.35rem;display:block;}
-.h-cta{font-weight:700;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:.85rem;margin-top:.5rem;display:block;padding:0;}
-/* SHARE BUTTONS */
+.h-label{font-weight:800;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:.4rem;display:block;}
+.h-cta{font-weight:700;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:.88rem;margin-top:.6rem;display:block;padding:0;}
+
+/* ── SHARE ── */
 .share-bar{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);}
-.share-label{font-size:.72rem;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-right:.25rem;}
-.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.74rem;font-weight:600;padding:.35rem .85rem;border-radius:20px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;}
+.share-label{font-size:.72rem;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-right:.25rem;}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.75rem;font-weight:700;padding:.38rem .9rem;border-radius:20px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;}
 .share-wa{background:#25d366;color:#fff;}.share-wa:hover{background:#1da851;transform:translateY(-1px);}
 .share-li{background:#0077b5;color:#fff;}.share-li:hover{background:#005e93;transform:translateY(-1px);}
-.share-ig{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff;}.share-ig:hover{opacity:.88;transform:translateY(-1px);}
+.share-ig{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff;}.share-ig:hover{opacity:.85;transform:translateY(-1px);}
 .share-copy{background:var(--bg3);color:var(--text2);border:1px solid var(--border)!important;}.share-copy:hover{border-color:var(--cyan)!important;color:var(--cyan);}
-/* WL STRIP */
-.wl-strip{background:linear-gradient(135deg,var(--bg3),#0a1930);border:1px solid var(--border);border-radius:16px;padding:2rem;display:flex;align-items:center;gap:2rem;margin:2.5rem 0;}
-.wl-logo{width:80px;height:80px;object-fit:cover;border-radius:8px;flex-shrink:0;}
-.wl-text{flex:1;}.wl-text h3{font-family:'Syne',sans-serif;font-size:1.08rem;font-weight:800;margin-bottom:.4rem;}
-.wl-text h3 span{color:var(--cyan);}.wl-text p{font-size:.82rem;color:var(--text2);line-height:1.6;margin-bottom:1rem;}
+
+/* ── WL STRIP ── */
+.wl-strip{background:linear-gradient(135deg,var(--bg3),#091728);border:1px solid var(--border);border-radius:20px;padding:2.5rem;display:flex;align-items:center;gap:2.5rem;margin:3rem 0;}
+.wl-logo{width:90px;height:90px;object-fit:cover;border-radius:12px;flex-shrink:0;}
+.wl-text{flex:1;}.wl-text h3{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;margin-bottom:.5rem;letter-spacing:-.01em;}
+.wl-text h3 span{color:var(--cyan);}.wl-text p{font-size:.9rem;color:var(--text2);line-height:1.75;margin-bottom:1.1rem;}
 .wl-actions{display:flex;gap:.75rem;flex-wrap:wrap;}
-/* CONTATO */
-#contato{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2.5rem;margin:2.5rem 0;}
-.cg{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;}
-.ci h2{font-family:'Syne',sans-serif;font-size:1.45rem;font-weight:800;margin-bottom:.75rem;}
-.ci h2 span{color:var(--cyan);}.ci p{font-size:.87rem;color:var(--text2);line-height:1.7;margin-bottom:1.5rem;}
-.perks{list-style:none;display:flex;flex-direction:column;gap:.55rem;}
-.perks li{font-size:.81rem;color:var(--text2);display:flex;align-items:flex-start;gap:8px;}
-.perks li::before{content:"✓";color:var(--cyan);font-weight:700;flex-shrink:0;}
-.fg{margin-bottom:1rem;}.fg label{display:block;font-size:.73rem;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.38rem;}
-.fg input,.fg textarea,.fg select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.62rem .9rem;color:var(--text);font-size:.84rem;font-family:'Inter',sans-serif;transition:border-color .2s;outline:none;}
+
+/* ── CONTATO ── */
+#contato{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:3rem;margin:3rem 0;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.ci h2{font-family:'Syne',sans-serif;font-size:1.65rem;font-weight:800;margin-bottom:.85rem;letter-spacing:-.02em;}
+.ci h2 span{color:var(--cyan);}.ci p{font-size:.93rem;color:var(--text2);line-height:1.8;margin-bottom:1.75rem;}
+.perks{list-style:none;display:flex;flex-direction:column;gap:.65rem;}
+.perks li{font-size:.88rem;color:var(--text2);display:flex;align-items:flex-start;gap:10px;}
+.perks li::before{content:"✓";color:var(--cyan);font-weight:800;flex-shrink:0;}
+.fg{margin-bottom:1.1rem;}.fg label{display:block;font-size:.75rem;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem;}
+.fg input,.fg textarea,.fg select{width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:.7rem 1rem;color:var(--text);font-size:.88rem;font-family:'Inter',sans-serif;transition:border-color .2s;outline:none;}
 .fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--cyan);}.fg select option{background:var(--bg3);}
-.fg textarea{resize:vertical;min-height:95px;}.fr{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.fcheck{display:flex;align-items:flex-start;gap:8px;font-size:.77rem;color:var(--text2);margin-bottom:1rem;}.fcheck input{margin-top:3px;accent-color:var(--cyan);}
-.sbtn{width:100%;background:var(--cyan);color:#000;font-weight:700;font-size:.88rem;padding:.85rem;border-radius:8px;border:none;cursor:pointer;transition:all .2s;font-family:'Syne',sans-serif;}
-.sbtn:hover{background:var(--cyan2);transform:translateY(-2px);}
-/* MODAL */
-.modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);align-items:flex-start;justify-content:center;padding:2rem 1rem;overflow-y:auto;}
+.fg textarea{resize:vertical;min-height:100px;}.fr{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.fcheck{display:flex;align-items:flex-start;gap:9px;font-size:.8rem;color:var(--text2);margin-bottom:1.1rem;}.fcheck input{margin-top:3px;accent-color:var(--cyan);}
+.sbtn{width:100%;background:var(--cyan);color:#000;font-weight:800;font-size:.95rem;padding:.9rem;border-radius:var(--radius-sm);border:none;cursor:pointer;transition:all .2s;font-family:'Syne',sans-serif;letter-spacing:.02em;}
+.sbtn:hover{background:var(--cyan2);transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,212,255,.25);}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.9);backdrop-filter:blur(12px);align-items:flex-start;justify-content:center;padding:2rem 1rem;overflow-y:auto;}
 .modal-overlay.open{display:flex;}
-.modal-box{background:var(--bg2);border:1px solid var(--border);border-radius:16px;max-width:760px;width:100%;margin:auto;overflow:hidden;animation:su .3s ease;}
-@keyframes su{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-.mh{background:var(--bg3);padding:1.4rem 2rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;}
-.mh h2{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;line-height:1.35;flex:1;}
-.mclose{background:none;border:none;color:var(--text2);cursor:pointer;font-size:1.4rem;line-height:1;}.mclose:hover{color:var(--cyan);}
-.mmeta{padding:.7rem 2rem;font-size:.73rem;color:var(--text2);display:flex;gap:1rem;border-bottom:1px solid var(--border);}
-.mbody{padding:2rem;font-size:.9rem;line-height:1.85;color:var(--text2);}.mbody p{margin-bottom:1rem;}
-.mbody h3{font-family:'Syne',sans-serif;color:var(--text);font-size:1rem;margin:1.4rem 0 .5rem;font-weight:700;}
-.mbody strong{color:var(--text);}.mbody ul{margin:.5rem 0 1rem 1.5rem;}.mbody li{margin-bottom:.4rem;}
-@media(max-width:900px){.featured-card{grid-template-columns:1fr;}.fi2{min-height:200px;}.content-layout{grid-template-columns:1fr;}.sidebar{display:none;}.stats-grid{grid-template-columns:repeat(2,1fr);}.cg{grid-template-columns:1fr;}.hero-overlay{padding:0 2rem;}.intro-strip{grid-template-columns:1fr;}}
-@media(max-width:600px){.stats-grid{grid-template-columns:1fr 1fr;}.fr{grid-template-columns:1fr;}.news-grid{grid-template-columns:1fr;}.hero-overlay{padding:1.5rem;}.hero h1{font-size:1.35rem;}main{padding:1.5rem 1rem;}.wl-strip{flex-direction:column;}}
+.modal-box{background:var(--bg2);border:1px solid var(--border);border-radius:20px;max-width:800px;width:100%;margin:auto;overflow:hidden;animation:su .3s ease;}
+@keyframes su{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+.mh{background:var(--bg3);padding:1.75rem 2.5rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;}
+.mh h2{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;line-height:1.3;flex:1;letter-spacing:-.01em;}
+.mclose{background:none;border:none;color:var(--text2);cursor:pointer;font-size:1.5rem;line-height:1;padding:0;}.mclose:hover{color:var(--cyan);}
+.mmeta{padding:.8rem 2.5rem;font-size:.77rem;color:var(--text2);display:flex;gap:1rem;border-bottom:1px solid var(--border);flex-wrap:wrap;align-items:center;}
+.mbody{padding:2.5rem;font-size:.93rem;line-height:1.9;color:var(--text2);}.mbody p{margin-bottom:1.1rem;}
+.mbody h3{font-family:'Syne',sans-serif;color:var(--text);font-size:1.05rem;margin:1.6rem 0 .6rem;font-weight:800;}
+.mbody strong{color:var(--text);}.mbody ul{margin:.5rem 0 1.1rem 1.5rem;}.mbody li{margin-bottom:.45rem;}
+.modal-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.modal-tag{background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);color:var(--cyan);padding:3px 11px;border-radius:20px;font-size:.72rem;font-weight:600;cursor:pointer;}
+
+/* ── FOOTER ── */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2.5rem 2rem;}
+.fi{max-width:1280px;margin:0 auto;}
+.fg2{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem;}
+.fb p{font-size:.85rem;color:var(--text2);line-height:1.75;margin-top:.85rem;}
+.fc h4{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--text);margin-bottom:.85rem;}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
+.fc ul li button{font-size:.83rem;color:var(--text2);background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:color .2s;padding:0;text-align:left;}
+.fc ul li button:hover{color:var(--cyan);}
+.fbot{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;font-size:.78rem;color:var(--text2);flex-wrap:wrap;gap:.5rem;}
+
+/* ── WA FLOAT ── */
+.wa-float{position:fixed;bottom:30px;right:30px;z-index:90;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,.5);cursor:pointer;transition:transform .2s;border:none;}
+.wa-float:hover{transform:scale(1.12);}.wa-float svg{width:30px;height:30px;fill:#fff;}
+.toast{position:fixed;bottom:100px;right:30px;z-index:91;background:var(--bg2);border:1px solid var(--cyan);border-radius:12px;padding:.8rem 1.4rem;font-size:.84rem;color:var(--text);display:none;align-items:center;gap:10px;box-shadow:0 4px 24px rgba(0,212,255,.18);}
+.toast.show{display:flex;}
+
+@media(max-width:1024px){.content-layout{grid-template-columns:1fr;}.sidebar{display:none;}.stats-grid{grid-template-columns:repeat(2,1fr);}.cg{grid-template-columns:1fr;}.hero-overlay{padding:0 3rem;}.intro-strip{grid-template-columns:1fr;}}
+@media(max-width:768px){.featured-card{grid-template-columns:1fr;}.fi2{min-height:220px;}.fg2{grid-template-columns:1fr 1fr;}.wl-strip{flex-direction:column;}}
+@media(max-width:600px){nav{display:none;}nav.open{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:1rem;z-index:99;}.menu-toggle{display:flex;}.stats-grid{grid-template-columns:1fr 1fr;}.fr{grid-template-columns:1fr;}.news-grid{grid-template-columns:1fr;}.fg2{grid-template-columns:1fr;}.hero-overlay{padding:1.5rem;}.hero h1{font-size:1.7rem;}main{padding:2rem 1.25rem;}.header-inner{padding:0 1.25rem;}}
 </style>
 </head>
 <body>
+
 <header>
   <div class="header-inner">
-    <div class="logo-wrap" id="logo-btn"><img src="data:image/jpeg;base64,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" class="logo-img" alt="SentineIA">
-      <div class="logo-text"><span class="logo-name">Sentine<span>IA</span></span><span class="logo-sub">Sua dose diária de IA, Segurança e Tech</span></div></div>
+    <div class="logo-wrap" id="logo-btn">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAB4AHgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD8z6KKK9M5C3brmMVJ5fGfSmWxIiGKlY84rRbCAICDzzS+X70BVY4pTlB1pgMK464/CjAApAfal60AKUB9KNvBNJhfelBJ6GhAIMZNAHtSgZNA4akFiK5GIz+FU6u3a7Yz+FUqmW40FFFFSAUUUUAXLY/ugKmADZqG3H7kGpMZOemK0WwBuw2R2oJ3HmlxjHvSqhNMQ0Dr3pQpPvUqx5PT8akEBIzmlYzcrFfb2oCkVa8nnpQbfH+FOzJ5ypnBzSqwA5GfepHQg8ioyuB0/Gp2LUkyO7fdCfrVGrdx/qT9aqUpbmiCiiipAKKKKALtsMwipMcHtTbQ/uRUhH61p0EIo3Y4qaOMt0psaHr1q9aRAupPT3prUwqSsEcA4Har1tpslzIkcUbSSMcKiDJJPGMV6/H8KNDla1WB9SDyxxM0coGRuXJI2pyO4GckY711OjeB4NGkkeUWehMqqEZ49srDy26hAz5bOeQAOfTjq9jJOx408fTtdHmdl8LFHh2S5v5ms9SkUPa2u1GDLjcd535UlSuAAeSd22uJ1DQ7nTZ2iuoGgkH8LfiMgjgjg8jivpTVWeCHT400VruGaN8Xb3QjmfbGnmGPnYgAwcMG3Z68isi40LT/ABFCUt7mHUp2kkK6dfhYpo/u4wJPlPIxlGPTGBmtJU1ZWOGljpKTc9v6/rU+cJoPaqbxbTivcdT+Esek3DNrdneaU0kjusYiMa7dqsFUbWHGWGc4OOvFeXeLtOtNO8Q6la2PnG0huJI4/tAHmbVYgbscZ45xWEqbirs9ejiYVXaJyl4oEJ+tUK0r9dsB+orNrlluetF3QUUUVJQUUUUAX7T/AFNPDbmFR2f+qFPH360S0EWkUDFXoFDBs8cHmqMS9z6VqWgDEelaI4qjPpOwcP4dO/ylZlsUYBCu5fQHjJIxxwKl0TTYhIgurVzArKzkIE4KscZ5IJycEA4xk++N4Yv4pvB9uyRKLi4tXG3nJMMh5HbOEY/07V0GjFYlLygeTKFbJ3YO1CO/U89q729EfHVLpyXmXjp66tHFbwSB7S1WQiJhuVSyDIwCOcp1x1HTtWNqmkG1s2iW2VtpYKkzF0VflBUZGFAHQBeo9One2r2ssIWJFjBiOX3H/nkOKwL829iMmNbt0d2aCRnCyAheGxzjqeCO3al5nBTqNSascla2SW/hrXbVVnW2F1D9ngmG7EarME44BIX+IAE968N8XETeI9UcJs3XcpC424+c9u1e86z9mmgu1gbyUuLqY4kLZxFEwyMdtztjPoa8A1Sbz7iWR+S7F+evJzzU19kj6DL23Jv+v60Oy8afACTwV8DNI8feJPE2n6Tf+Igs/h7wuInlvb+1Eiq9y7D5YYwDuXdktx0JxXiNfQvxM+OGkfEP4C+HPCfijwjcDxn4UtItO0DxRa3RiR7DzVJhuYGGHwoYK698Hj5s/PVeVr9o+sjaysFFFFMoKKKKAL1n/qhUvR+lR2n+pFSv0z6VogJoW6Z6VpWsmDjoPWsqJsd/pVuGfHSrRyVEev8Aw416U2q2yzlZrNvPt0ZiEKjc0gxjkkkdx949e3XrfvAITCks1s7NJEFdgygAl4yeBvUEcZ5BBAOePC9J1STT7uK4jIEsbB1z0yDxXo+k+KILy1EmRdBhi6s5QQvAOGyBnI2khl+4Dg9cHupSjKPKz57E4ZqXNE9Di8Um4TyiksMbRtGWkZwVOzaAePXj098c1WMnkO1lBFBJHE00cqSOTb2xAHmS/KQcpuBLfdO1QoJOK5d7hftEMv8Aa8TWxjwbS4jZ50AjwuAOH4wQVKg4+YKKju9RtTYXcInXTrZpGln+0x+Y1zJkYL7RgkE8KvC8HnGa35LbnlrD3ehp+Mb20u/Dl5fxztHtdrezUtgtjbvLpjqQ5bOQNxPXpXh11KNxAAI9609d16fUbmWSWRypJ2q7liB6Z7n3rn7iYsr7c7sHGOv4e9cdaam9Oh9DhKDoxsz1j4lftCW3xO+CGieE/FnhaLUfFnhmCHT9B8YW940U0VisgJtrmHBWYBRtVsgrwcZyW8Br6o+Olv4Pu/gTYT6a3g6DxGltokpstFe2NzFCq3MU7eauHlEjtBIyOPOjYuH3IqPXyvXmxaeyPfs1uFFFFUAUUUUAXrbiAH60/JPHaorc/uQKmzx9K0QhATnFTxnA64IqBh0IPSlVvXrVXIkro0opj1zV62vZYHDxO0b/AN5ev0+ntWRHclDkYx71ftdcltvupGfqoNUmcs4O2x0UHiQxwOWhP2rAEcsbBV6YJZccnHpjJzmszUNXur+QPcSF8dBjCr9AOBQvjW7Vdgit8e8S/wCFUrrxDPcn5kj5/uqBWsqjas2csKck78q+8gmmJzz+FVJJSSe1OlujIx6fQCqrMSawud8YPqR3jbojkc5qjVy6B8o59ap1k9zoQUUUUhhRRRQBdtQDEDU7DIqG15hX8anAx1/KtFsIiwaeV44pSvtSKc8UwAqQeKFkKjnilyR24pASecA0rBYXzCcfNTS+Pf3pSc9qQjJ4oELksOKTIHv70o+VaaRTQyK5z5LfhVOr12MQn6iqNZsYUUUUgCiiigC5bEiJfrUzNkg4IoorRCEPXvilBw3SiihMBDn0NO3ZHIxRRRfQAB6Zpob5s4/Oiii4hSckk8U3OT3oooAZdtmNvSqVFFTLcpBRRRUgf//Z" class="logo-img" alt="SentineIA">
+      <div class="logo-text">
+        <span class="logo-name">Sentine<span>IA</span></span>
+        <span class="logo-sub">Sua dose diária de IA, Segurança e Tech</span>
+      </div>
+    </div>
     <nav id="nav">
       <button id="nav-home">Home</button>
       <button id="nav-news">Notícias</button>
@@ -193,8 +262,8 @@ main{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;}
       <h1>Inteligência Artificial<br>que <span>transforma</span><br>pequenas empresas</h1>
       <p class="hero-desc">Notícias de IA, automação e tecnologia — traduzidas para a linguagem do empreendedor brasileiro. Fique à frente da concorrência.</p>
       <div class="hero-actions">
-        <button class="btn btn-p" id="hero-news">&#128240; Ler Últimas Notícias</button>
-        <button class="btn btn-o" id="hero-cta">&#128172; Falar com Especialista</button>
+        <button class="btn btn-p" id="hero-news">📰 Ler Últimas Notícias</button>
+        <button class="btn btn-o" id="hero-cta">💬 Falar com Especialista</button>
       </div>
     </div>
   </div>
@@ -204,16 +273,17 @@ main{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;}
   <div class="ti"><span class="tdot"></span><span class="tlbl">Destaque</span>IA generativa reduz custos operacionais em até 40% para PMEs</div>
   <div class="ti"><span class="tdot"></span><span class="tlbl">Inovação</span>Automação cresce 67% entre micro e pequenas empresas no Brasil</div>
   <div class="ti"><span class="tdot"></span><span class="tlbl">Alerta</span>78% dos MEIs ainda usam planilhas manuais para decisões financeiras</div>
-  <div class="ti"><span class="tdot"></span><span class="tlbl">Tendência</span>ChatGPT é usado por 1 em cada 3 empreendedores brasileiros</div>
+  <div class="ti"><span class="tdot"></span><span class="tlbl">Tendência</span>Power BI e dashboards são adotados por 1 em cada 4 PMEs em 2026</div>
   <div class="ti"><span class="tdot"></span><span class="tlbl">Dados</span>Dashboards aumentam 3x a velocidade de decisão gerencial</div>
   <div class="ti"><span class="tdot"></span><span class="tlbl">Destaque</span>IA generativa reduz custos operacionais em até 40% para PMEs</div>
   <div class="ti"><span class="tdot"></span><span class="tlbl">Inovação</span>Automação cresce 67% entre micro e pequenas empresas no Brasil</div>
   <div class="ti"><span class="tdot"></span><span class="tlbl">Alerta</span>78% dos MEIs ainda usam planilhas manuais para decisões financeiras</div>
-  <div class="ti"><span class="tdot"></span><span class="tlbl">Tendência</span>ChatGPT é usado por 1 em cada 3 empreendedores brasileiros</div>
+  <div class="ti"><span class="tdot"></span><span class="tlbl">Tendência</span>Power BI e dashboards são adotados por 1 em cada 4 PMEs em 2026</div>
   <div class="ti"><span class="tdot"></span><span class="tlbl">Dados</span>Dashboards aumentam 3x a velocidade de decisão gerencial</div>
 </div></div>
 
 <main>
+
 <div class="intro-strip">
   <div>
     <h2>Bem-vindo ao <span>SentineIA</span> — O Portal que Vigia o Futuro por Você</h2>
@@ -226,7 +296,7 @@ main{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;}
       <div class="pillar">📈 Negócios &amp; Tech</div>
     </div>
   </div>
-  <div style="text-align:center;flex-shrink:0;display:flex;flex-direction:column;gap:.75rem;">
+  <div class="intro-ctas">
     <button class="btn btn-p" id="intro-sobre">Conheça nossa missão →</button>
     <button class="btn btn-o" id="intro-wa">📲 Receba no WhatsApp</button>
   </div>
@@ -239,7 +309,13 @@ main{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;}
   <div class="sc"><span class="sn">92%</span><span class="sl2">dos empresários com IA decidem melhor</span></div>
 </div>
 
-<div><div class="sh"><span class="st">Destaque do Dia</span><span id="last-update" style="font-size:.72rem;color:var(--text2)"></span></div>
+<!-- TAG CLOUD -->
+<div class="tag-cloud-section">
+  <div class="tag-cloud-title">Buscar por tema</div>
+  <div class="tag-cloud" id="tag-cloud"></div>
+</div>
+
+<div><div class="sh"><span class="st">Destaque do Dia</span><span id="last-update" style="font-size:.78rem;color:var(--text2)"></span></div>
 <div id="featured-container"></div></div>
 
 <div class="video-section">
@@ -265,6 +341,10 @@ main{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;}
       <button class="fbtn" data-cat="tecnologia">Tecnologia</button>
       <button class="fbtn" data-cat="negocios">Negócios</button>
     </div>
+    <div class="tag-filter-banner" id="tag-filter-banner">
+      <span id="tag-filter-label">🔍 Filtrando por tag:</span>
+      <button class="tag-clear" id="tag-clear-btn">✕ Limpar filtro</button>
+    </div>
     <div class="news-grid" id="news-grid"></div>
     <div class="load-wrap"><button class="btn btn-d" id="load-more" style="display:none">Carregar mais ↓</button></div>
   </div>
@@ -272,18 +352,8 @@ main{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;}
     <div class="sb-card"><div class="sb-title">🔥 Mais Lidas</div><ul class="sb-list" id="sb-trending"></ul></div>
     <div class="sb-card" style="background:linear-gradient(135deg,rgba(0,212,255,.06),var(--card));border-color:rgba(0,212,255,.2)">
       <div class="sb-title" style="color:var(--cyan)">📲 Receba no WhatsApp</div>
-      <p style="font-size:.78rem;color:var(--text2);line-height:1.6;margin-bottom:1rem">Notícias diárias de IA e tech — <strong style="color:var(--text)">antes da concorrência saber.</strong></p>
-      <button class="btn btn-p" id="wa-assinar" style="width:100%;justify-content:center;font-size:.81rem">📲 Assinar Grátis</button>
-    </div>
-    <div class="sb-card"><div class="sb-title">🏷️ Categorias</div>
-      <div style="margin-top:.25rem">
-        <span class="tag" data-cat="ia">#IA &amp; Inovação</span>
-        <span class="tag" data-cat="automacao">#Automação</span>
-        <span class="tag" data-cat="negocios">#PMEs</span>
-        <span class="tag" data-cat="dados">#Dados</span>
-        <span class="tag" data-cat="negocios">#MEI</span>
-        <span class="tag" data-cat="tecnologia">#Tecnologia</span>
-      </div>
+      <p style="font-size:.83rem;color:var(--text2);line-height:1.7;margin-bottom:1.1rem">Notícias diárias de IA e tech — <strong style="color:var(--text)">antes da concorrência saber.</strong></p>
+      <button class="btn btn-p" id="wa-assinar" style="width:100%;justify-content:center;">📲 Assinar Grátis</button>
     </div>
   </aside>
 </div>
@@ -304,7 +374,7 @@ main{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;}
   <div class="cg">
     <div class="ci">
       <h2>Pronto para <span>transformar</span> seu negócio?</h2>
-      <p>Preencha o formulário e nossa equipe entra em contato para entender sua necessidade e apresentar a solução ideal.</p>
+      <p>Preencha o formulário e nossa equipe entra em contato para entender sua necessidade e apresentar a solução ideal — sem enrolação, sem compromisso.</p>
       <ul class="perks">
         <li>Diagnóstico gratuito do seu processo atual</li>
         <li>Proposta personalizada em até 24h</li>
@@ -312,7 +382,7 @@ main{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;}
         <li>Atendimento humanizado por especialistas</li>
         <li>Solução funcionando em semanas, não meses</li>
       </ul>
-      <div style="margin-top:1.5rem"><button class="btn btn-p" id="ci-wa" style="font-size:.82rem">📱 WhatsApp Direto</button></div>
+      <div style="margin-top:1.75rem"><button class="btn btn-p" id="ci-wa">📱 WhatsApp Direto</button></div>
     </div>
     <div>
       <form id="contact-form">
@@ -345,8 +415,8 @@ main{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;}
   <div class="fi">
     <div class="fg2">
       <div class="fb">
-        <div><span style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800">Sentine<span style="color:var(--cyan)">IA</span></span><br>
-        <span style="font-size:.62rem;color:var(--text2);text-transform:uppercase;letter-spacing:.08em">por WL Soluções</span></div>
+        <div><span style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;letter-spacing:-.02em">Sentine<span style="color:var(--cyan)">IA</span></span><br>
+        <span style="font-size:.65rem;color:var(--text2);text-transform:uppercase;letter-spacing:.1em">por WL Soluções</span></div>
         <p>Sua fonte diária de Inteligência Artificial, Automação e Tecnologia — com impacto real para PMEs brasileiras.</p>
       </div>
       <div class="fc"><h4>Portal</h4><ul>
@@ -367,11 +437,12 @@ main{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;}
       </ul></div>
     </div>
     <div class="fbot">
-      <span>© 2025 SentineIA · WL Soluções. Todos os direitos reservados.</span>
+      <span>© 2026 SentineIA · WL Soluções. Todos os direitos reservados.</span>
       <span>Powered by IA — Atualizado diariamente</span>
     </div>
   </div>
 </footer>
+
 <button class="wa-float" id="wa-float" title="Falar com WL Soluções">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </button>
@@ -386,24 +457,8 @@ main{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;}
 </div>
 
 <script>
-
 var WA="5511984885826";
-function openWA(msg){window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg||"Olá! Vim pelo SentineIA e quero saber mais sobre a WL Soluções."),"_blank");}
-function showToast(msg,ms){var e=document.getElementById("toast-el");document.getElementById("toast-msg").textContent=msg;e.classList.add("show");setTimeout(function(){e.classList.remove("show");},ms||3000);}
-function goPage(p){window.location.href=p;}
-function bindFooter(){
-  document.querySelectorAll(".ft-home").forEach(function(b){b.addEventListener("click",function(){goPage("index.html");});});
-  document.querySelectorAll(".ft-news").forEach(function(b){b.addEventListener("click",function(){goPage("index.html#noticias");});});
-  document.querySelectorAll(".ft-sobre").forEach(function(b){b.addEventListener("click",function(){goPage("sobre.html");});});
-  document.querySelectorAll(".ft-contato").forEach(function(b){b.addEventListener("click",function(){goPage("index.html#contato");});});
-  document.querySelectorAll(".ft-wa").forEach(function(b){b.addEventListener("click",function(){openWA();});});
-  document.querySelectorAll(".ft-ig").forEach(function(b){b.addEventListener("click",function(){showToast("Instagram em breve!");});});
-  document.querySelectorAll(".ft-li").forEach(function(b){b.addEventListener("click",function(){showToast("LinkedIn em breve!");});});
-  document.querySelectorAll(".ft-priv,.ft-terms,.ft-lgpd").forEach(function(b){b.addEventListener("click",function(){showToast("Em breve.");});});
-  document.getElementById("wa-float").addEventListener("click",function(){openWA();});
-  document.getElementById("menu-btn").addEventListener("click",function(){document.getElementById("nav").classList.toggle("open");});
-}
-
+var SITE_URL="https://SEU-USUARIO.github.io/sentineia/";
 var CAT={ia:"IA & Inovação",automacao:"Automação",dados:"Gestão de Dados",tecnologia:"Tecnologia",negocios:"Negócios"};
 var EMO={ia:"🤖",automacao:"⚙️",dados:"📊",tecnologia:"💻",negocios:"📈"};
 var HOOKS={
@@ -412,95 +467,161 @@ var HOOKS={
   C:'<div class="hook-box hC"><span class="h-label" style="color:#a855f7">🛡️ WL Soluções — Sem Dependência</span>Chega de horas de consultoria intermináveis. <strong style="color:var(--text)">Entregamos a solução pronta e treinamos seu time</strong> para manter. Tecnologia feita para servir você, não o contrário.<button class="h-cta hcta" style="color:#a855f7">→ Quero minha solução</button></div>'
 };
 
-var ALL_NEWS=[{"id": "f1", "categoria": "ia", "titulo": "ChatGPT já decide por 1 em cada 3 empresas — e o seu negócio ainda não usa?", "subtitulo": "Pesquisa da McKinsey: empresas que adotaram IA reduziram custos em 28% no primeiro trimestre", "resumo": "A IA deixou de ser tendência e virou vantagem competitiva. Saiba o que seus concorrentes já estão fazendo enquanto você lê este texto.", "corpo": "<p>Se você ainda acha que inteligência artificial é coisa de grande empresa, prepare-se: uma pesquisa da <strong>McKinsey</strong> publicada em 2025 revelou que 37% das pequenas e médias empresas globais já utilizam IA em processos de decisão.</p><h3>O que está em jogo para o seu negócio</h3><p>Empresas que implementaram ferramentas de IA em processos simples registraram redução média de <strong>28% nos custos operacionais</strong> no primeiro trimestre. Para um MEI com faturamento de R$ 20 mil mensais, isso representa economia de R$ 5.600 por mês.</p><h3>Por que a IA não é mais luxo</h3><p>Ferramentas como ChatGPT, Copilot e soluções específicas para PMEs estão cada vez mais acessíveis. O custo de uma automação bem implementada pode ser recuperado em menos de 60 dias. Segundo o Gartner, até 2026, <strong>80% das empresas que não adotarem IA perderão competitividade relevante</strong>.</p>", "hook": "A", "data": "2025-04-26", "destaque": true}, {"id": "f2", "categoria": "automacao", "titulo": "Você paga salário para copiar dados de planilha? Isso acabou — e custa menos do que você imagina", "subtitulo": "Automação libera até 15 horas semanais da sua equipe sem demitir ninguém", "resumo": "Tarefas manuais drenam tempo e dinheiro todos os dias. A automação inteligente resolve isso em semanas.", "corpo": "<p>Quantas horas por semana sua equipe passa copiando dados de um sistema para outro? Se a resposta for mais de 3 horas, você está desperdiçando dinheiro.</p><h3>O custo invisível do trabalho manual</h3><p>Segundo o SEBRAE, pequenas empresas perdem em média <strong>12 a 18 horas semanais</strong> em tarefas que poderiam ser automatizadas. Esse desperdício representa entre R$ 600 e R$ 900 mensais por funcionário.</p><h3>O que a automação faz pelo seu negócio</h3><p>Com automações bem implementadas, processos como emissão de boletos, envio de cobranças e geração de relatórios passam a acontecer sem intervenção humana. Empresas que automatizaram relatam <strong>40% de ganho de produtividade em 90 dias</strong>.</p>", "hook": "B", "data": "2025-04-25", "destaque": false}, {"id": "f3", "categoria": "dados", "titulo": "Sua empresa gera dados todo dia — mas você está voando às cegas nas decisões mais importantes", "subtitulo": "Dashboard em tempo real transforma dados dispersos em decisões que salvam negócios", "resumo": "Dados acumulados em planilhas não valem nada se você não consegue enxergá-los quando precisa decidir.", "corpo": "<p>Uma pesquisa do Gartner revelou que <strong>87% das empresas têm dados de baixa qualidade</strong> — não porque os dados são ruins, mas porque estão espalhados em planilhas e e-mails desconectados.</p><h3>O problema real das planilhas</h3><p>Não é que planilhas sejam ruins. O problema é que elas não escalam. Uma planilha com 500 linhas não te diz nada em segundos. Um dashboard estratégico sim.</p><h3>Quanto vale uma decisão certa?</h3><p>Segundo a IBM, empresas com acesso a dados em tempo real tomam decisões <strong>3 vezes mais rápidas</strong> e com 60% menos erros.</p>", "hook": "A", "data": "2025-04-25", "destaque": false}, {"id": "f4", "categoria": "tecnologia", "titulo": "Meta, Google e Microsoft apostam em IA para PMEs — você vai ficar de fora?", "subtitulo": "Mais de 40 ferramentas de IA para pequenas empresas lançadas nos últimos 6 meses", "resumo": "O mercado de IA para PMEs explodiu. Entenda o que está disponível e como aproveitar sem gastar uma fortuna.", "corpo": "<p>Nunca houve tanto investimento em ferramentas de IA acessíveis para pequenas empresas. Só no primeiro semestre de 2025, Meta, Google e Microsoft lançaram mais de 40 soluções voltadas para PMEs.</p><h3>O que está disponível agora</h3><p>O <strong>Google Gemini para Workspace</strong> cria relatórios e resume e-mails automaticamente. A <strong>Microsoft Copilot</strong> tornou planilhas e documentos inteligentes. A <strong>Meta ampliou o WhatsApp Business API</strong> com IA para atendimento.</p><h3>Como começar</h3><p>Comece por um processo específico com problema claro, meça em 30 dias e expanda. Assim você garante retorno desde o início.</p>", "hook": "B", "data": "2025-04-24", "destaque": false}, {"id": "f5", "categoria": "negocios", "titulo": "SEBRAE revela: empresas com gestão digital faturam 2,4x mais — 78% dos MEIs ainda ignoram isso", "subtitulo": "O abismo digital entre PMEs brasileiras está crescendo. De que lado está o seu negócio?", "resumo": "A digitalização deixou de ser diferencial e virou requisito de sobrevivência. Os dados do SEBRAE são alarmantes.", "corpo": "<p>Um levantamento do SEBRAE em 2025: empresas com ferramentas de gestão digital faturam, em média, <strong>2,4 vezes mais</strong> do que concorrentes que mantêm processos manuais.</p><h3>O abismo está crescendo</h3><p>78% dos MEIs brasileiros ainda não adotaram nenhuma ferramenta de gestão digital além de planilhas. Enquanto isso, os 22% que digitalizaram crescem mais rápido e erram menos.</p><h3>Por onde começar?</h3><p>Identifique os gargalos mais críticos — controle financeiro, gestão de clientes ou estoque — e ataque um de cada vez com a ferramenta certa.</p>", "hook": "C", "data": "2025-04-24", "destaque": false}, {"id": "f6", "categoria": "ia", "titulo": "IA no atendimento: responda 300 mensagens por hora sem contratar ninguém", "subtitulo": "Chatbots de nova geração atendem, qualificam e vendem 24h por dia, 7 dias por semana", "resumo": "O atendimento automatizado inteligente chegou ao alcance das pequenas empresas. Veja o impacto real.", "corpo": "<p>Imagine nunca mais perder um cliente por demora no atendimento. Isso já é realidade para centenas de PMEs que implementaram IA generativa no WhatsApp.</p><h3>Números que impressionam</h3><p>Uma pesquisa da Salesforce: <strong>68% dos consumidores pagam mais</strong> quando o atendimento é rápido. O que define rápido em 2025? Menos de 5 minutos para a primeira resposta.</p><h3>Quanto custa não atender rápido?</h3><p>Empresas brasileiras perdem em média <strong>R$ 1.300 por mês</strong> em oportunidades não atendidas fora do horário comercial. Para um MEI que fatura R$ 15 mil mensais, isso é mais de 8% do faturamento.</p>", "hook": "B", "data": "2025-04-23", "destaque": false}, {"id": "f7", "categoria": "automacao", "titulo": "Seu concorrente automatizou o estoque e vende 40% mais — você ainda conta produto na mão?", "subtitulo": "Controle de estoque inteligente elimina rupturas, reduz desperdício e aumenta margem", "resumo": "Estoque mal gerenciado é dinheiro parado ou produto faltando na hora errada. A automação resolve os dois.", "corpo": "<p>Ruptura de estoque custa caro: você perde a venda, o cliente vai ao concorrente e raramente volta. Excesso de estoque também prejudica: capital parado, produto vencendo.</p><h3>O problema invisível</h3><p>Segundo a Deloitte, pequenos varejistas brasileiros perdem em média <strong>R$ 2.800 mensais</strong> por problemas de gestão de estoque.</p><h3>Como a automação transforma</h3><p>Com sistemas inteligentes, o estoque se atualiza automaticamente a cada venda. Empresas que automatizaram relatam <strong>redução de 35% no desperdício</strong> e <strong>aumento de 40% na disponibilidade</strong> nos primeiros 60 dias.</p>", "hook": "B", "data": "2025-04-23", "destaque": false}, {"id": "f8", "categoria": "dados", "titulo": "Quanto você perdeu no último mês sem saber? A maioria dos MEIs não tem essa resposta", "subtitulo": "Gestão financeira por intuição mata negócios — dashboard financeiro muda esse jogo", "resumo": "Tomar decisão financeira sem dados é como dirigir vendado. Veja como empreendedores estão virando esse jogo.", "corpo": "<p>Uma pesquisa do SEBRAE: <strong>60% das micro e pequenas empresas fecham antes de 5 anos</strong>. A principal causa não é falta de clientes — é falta de controle financeiro.</p><h3>A ilusão do movimento</h3><p>Muitos empresários confundem movimento com lucro. Sem dados em tempo real, você pode estar crescendo em faturamento e encolhendo em margem sem perceber.</p><h3>O que um dashboard muda</h3><p>Com um painel personalizado, você visualiza fluxo de caixa dos próximos 30 dias, produtos mais rentáveis e despesas que mais crescem — sem software caro.</p>", "hook": "A", "data": "2025-04-22", "destaque": false}];
-var visible=6,activeFilter="all";
-var SITE_URL="https://SEU-USUARIO.github.io/sentineia/";
+var ALL_NEWS=[{"id": "f1", "categoria": "ia", "titulo": "ChatGPT já decide por 1 em cada 3 empresas — e o seu negócio ainda não usa?", "subtitulo": "Pesquisa da McKinsey: empresas que adotaram IA reduziram custos em 28% no primeiro trimestre", "resumo": "A IA deixou de ser tendência e virou vantagem competitiva. Saiba o que seus concorrentes já estão fazendo enquanto você lê este texto.", "tags": ["IA", "ChatGPT", "Automação", "PME"], "corpo": "<p>Se você ainda acha que inteligência artificial é coisa de grande empresa, prepare-se: uma pesquisa da <strong>McKinsey</strong> publicada em 2025 revelou que 37% das pequenas e médias empresas globais já utilizam IA em processos de decisão.</p><h3>O que está em jogo para o seu negócio</h3><p>Empresas que implementaram ferramentas de IA em processos simples registraram redução média de <strong>28% nos custos operacionais</strong> no primeiro trimestre. Para um MEI com faturamento de R$ 20 mil mensais, isso representa economia de R$ 5.600 por mês.</p><h3>Por que a IA não é mais luxo</h3><p>Ferramentas como ChatGPT, Copilot e soluções específicas para PMEs estão cada vez mais acessíveis. O custo de uma automação bem implementada pode ser recuperado em menos de 60 dias. Segundo o Gartner, até 2026, <strong>80% das empresas que não adotarem IA perderão competitividade relevante</strong>.</p>", "hook": "A", "data": "2026-04-26", "destaque": true}, {"id": "f2", "categoria": "automacao", "titulo": "Você paga salário para copiar dados de planilha? Isso acabou — e custa menos do que você imagina", "subtitulo": "Automação libera até 15 horas semanais da sua equipe sem demitir ninguém", "resumo": "Tarefas manuais drenam tempo e dinheiro todos os dias. A automação inteligente resolve isso em semanas.", "tags": ["Automação", "Processos", "Produtividade", "MEI"], "corpo": "<p>Quantas horas por semana sua equipe passa copiando dados de um sistema para outro? Se a resposta for mais de 3 horas, você está desperdiçando dinheiro.</p><h3>O custo invisível do trabalho manual</h3><p>Segundo o SEBRAE, pequenas empresas perdem em média <strong>12 a 18 horas semanais</strong> em tarefas que poderiam ser automatizadas. Esse desperdício representa entre R$ 600 e R$ 900 mensais por funcionário.</p><h3>O que a automação faz pelo seu negócio</h3><p>Com automações bem implementadas, processos como emissão de boletos, envio de cobranças e geração de relatórios passam a acontecer sem intervenção humana. Empresas que automatizaram relatam <strong>40% de ganho de produtividade em 90 dias</strong>.</p>", "hook": "B", "data": "2026-04-25", "destaque": false}, {"id": "f3", "categoria": "dados", "titulo": "Sua empresa gera dados todo dia — mas você está voando às cegas nas decisões mais importantes", "subtitulo": "Dashboard em tempo real transforma dados dispersos em decisões que salvam negócios", "resumo": "Dados acumulados em planilhas não valem nada se você não consegue enxergá-los quando precisa decidir.", "tags": ["Dados", "Dashboard", "Power BI", "Decisão"], "corpo": "<p>Uma pesquisa do Gartner revelou que <strong>87% das empresas têm dados de baixa qualidade</strong> — não porque os dados são ruins, mas porque estão espalhados em planilhas e e-mails desconectados.</p><h3>O problema real das planilhas</h3><p>Não é que planilhas sejam ruins. O problema é que elas não escalam. Uma planilha com 500 linhas não te diz nada em segundos. Um dashboard estratégico sim.</p><h3>Quanto vale uma decisão certa?</h3><p>Segundo a IBM, empresas com acesso a dados em tempo real tomam decisões <strong>3 vezes mais rápidas</strong> e com 60% menos erros.</p>", "hook": "A", "data": "2026-04-25", "destaque": false}, {"id": "f4", "categoria": "tecnologia", "titulo": "Meta, Google e Microsoft apostam em IA para PMEs — você vai ficar de fora?", "subtitulo": "Mais de 40 ferramentas de IA para pequenas empresas lançadas nos últimos 6 meses", "resumo": "O mercado de IA para PMEs explodiu. Entenda o que está disponível e como aproveitar sem gastar uma fortuna.", "tags": ["IA", "Tecnologia", "PME", "Inovação"], "corpo": "<p>Nunca houve tanto investimento em ferramentas de IA acessíveis para pequenas empresas. Só no primeiro semestre de 2026, Meta, Google e Microsoft lançaram mais de 40 soluções voltadas para PMEs.</p><h3>O que está disponível agora</h3><p>O <strong>Google Gemini para Workspace</strong> cria relatórios e resume e-mails automaticamente. A <strong>Microsoft Copilot</strong> tornou planilhas e documentos inteligentes. A <strong>Meta ampliou o WhatsApp Business API</strong> com IA para atendimento.</p><h3>Como começar</h3><p>Comece por um processo específico com problema claro, meça em 30 dias e expanda. Assim você garante retorno desde o início.</p>", "hook": "B", "data": "2026-04-24", "destaque": false}, {"id": "f5", "categoria": "negocios", "titulo": "SEBRAE revela: empresas com gestão digital faturam 2,4x mais — 78% dos MEIs ainda ignoram isso", "subtitulo": "O abismo digital entre PMEs brasileiras está crescendo. De que lado está o seu negócio?", "resumo": "A digitalização deixou de ser diferencial e virou requisito de sobrevivência. Os dados do SEBRAE são alarmantes.", "tags": ["Gestão", "MEI", "Digitalização", "SEBRAE"], "corpo": "<p>Um levantamento do SEBRAE em 2026: empresas com ferramentas de gestão digital faturam, em média, <strong>2,4 vezes mais</strong> do que concorrentes que mantêm processos manuais.</p><h3>O abismo está crescendo</h3><p>78% dos MEIs brasileiros ainda não adotaram nenhuma ferramenta de gestão digital além de planilhas. Enquanto isso, os 22% que digitalizaram crescem mais rápido e erram menos.</p><h3>Por onde começar?</h3><p>Identifique os gargalos mais críticos — controle financeiro, gestão de clientes ou estoque — e ataque um de cada vez.</p>", "hook": "C", "data": "2026-04-24", "destaque": false}, {"id": "f6", "categoria": "ia", "titulo": "IA no atendimento: responda 300 mensagens por hora sem contratar ninguém", "subtitulo": "Chatbots de nova geração atendem, qualificam e vendem 24h por dia, 7 dias por semana", "resumo": "O atendimento automatizado inteligente chegou ao alcance das pequenas empresas. Veja o impacto real.", "tags": ["IA", "Chatbot", "Atendimento", "Automação"], "corpo": "<p>Imagine nunca mais perder um cliente por demora no atendimento. Isso já é realidade para centenas de PMEs que implementaram IA generativa no WhatsApp.</p><h3>Números que impressionam</h3><p>Uma pesquisa da Salesforce: <strong>68% dos consumidores pagam mais</strong> quando o atendimento é rápido. O que define rápido em 2026? Menos de 5 minutos para a primeira resposta.</p><h3>Quanto custa não atender rápido?</h3><p>Empresas brasileiras perdem em média <strong>R$ 1.300 por mês</strong> em oportunidades não atendidas fora do horário comercial.</p>", "hook": "B", "data": "2026-04-23", "destaque": false}, {"id": "f7", "categoria": "dados", "titulo": "Power BI para pequenas empresas: o dashboard que grandes corporações usam agora é seu", "subtitulo": "Ferramenta da Microsoft transforma planilhas em painéis interativos — e custa menos que um café por dia", "resumo": "O Power BI deixou de ser exclusivo de grandes empresas. Veja como PMEs estão usando para tomar decisões em segundos.", "tags": ["Power BI", "Dashboard", "Dados", "Microsoft"], "corpo": "<p>O Power BI, ferramenta de inteligência de dados da Microsoft, foi por anos sinônimo de grandes corporações. Isso acabou. A versão gratuita já permite criar dashboards profissionais — e a versão paga custa R$ 55 mensais por usuário.</p><h3>O que você pode visualizar</h3><p>Com o Power BI conectado aos seus sistemas, você visualiza em segundos: faturamento por produto, ticket médio por cliente, sazonalidade de vendas, inadimplência e muito mais. Tudo atualizado em tempo real.</p><h3>Empresas que já usam</h3><p>Pequenas redes de varejo brasileiras que adotaram o Power BI relatam <strong>redução de 70% no tempo</strong> gasto em reuniões de resultado — porque todos chegam já sabendo os números.</p>", "hook": "A", "data": "2026-04-22", "destaque": false}, {"id": "f8", "categoria": "dados", "titulo": "Quanto você perdeu no último mês sem saber? A maioria dos MEIs não tem essa resposta", "subtitulo": "Gestão financeira por intuição mata negócios — dashboard financeiro muda esse jogo", "resumo": "Tomar decisão financeira sem dados é como dirigir vendado. Veja como empreendedores estão virando esse jogo.", "tags": ["Dados", "Finanças", "Dashboard", "MEI"], "corpo": "<p>Uma pesquisa do SEBRAE: <strong>60% das micro e pequenas empresas fecham antes de 5 anos</strong>. A principal causa não é falta de clientes — é falta de controle financeiro.</p><h3>A ilusão do movimento</h3><p>Muitos empresários confundem movimento com lucro. Sem dados em tempo real, você pode estar crescendo em faturamento e encolhendo em margem sem perceber.</p><h3>O que um dashboard muda</h3><p>Com um painel personalizado, você visualiza fluxo de caixa dos próximos 30 dias, produtos mais rentáveis e despesas que mais crescem — sem software caro.</p>", "hook": "A", "data": "2026-04-22", "destaque": false}];
+var visible=6,activeFilter="all",activeTag=null;
+
+function openWA(msg){window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg||"Olá! Vim pelo SentineIA e quero saber mais sobre a WL Soluções."),"_blank");}
+function showToast(msg,ms){var e=document.getElementById("toast-el");document.getElementById("toast-msg").textContent=msg;e.classList.add("show");setTimeout(function(){e.classList.remove("show");},ms||3000);}
+function goPage(p){window.location.href=p;}
+function goTo(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});}
 
 function fmtDate(d){
-  if(!d||d==="undefined"||d==="null")return"Hoje";
-  var parts=d.split("-");
-  if(parts.length!==3)return"Hoje";
+  if(!d||typeof d!=="string")return"Hoje";
+  var p=d.split("-");if(p.length!==3)return"Hoje";
   var months=["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
-  var day=parseInt(parts[2],10);
-  var mon=parseInt(parts[1],10)-1;
-  var yr=parseInt(parts[0],10);
+  var day=parseInt(p[2],10),mon=parseInt(p[1],10)-1,yr=parseInt(p[0],10);
   if(isNaN(day)||isNaN(mon)||isNaN(yr))return"Hoje";
   return day+" de "+months[mon]+" de "+yr;
 }
 
-function shareWA(titulo,url){
-  var txt=encodeURIComponent("🤖 *"+titulo+"*\n\nLi no SentineIA — o portal de IA e tecnologia para empreendedores brasileiros.\n\n🔗 "+url+"\n\n_Portal SentineIA · por WL Soluções_");
-  window.open("https://wa.me/?text="+txt,"_blank");
-}
-function shareLI(titulo,url){
-  window.open("https://www.linkedin.com/sharing/share-offsite/?url="+encodeURIComponent(url),"_blank");
-}
-function shareIG(titulo){
-  var txt=titulo+" — leia no SentineIA (link na bio) #IA #Tecnologia #PME #Automação #WLSoluções";
-  navigator.clipboard.writeText(txt).then(function(){showToast("📋 Texto copiado! Cole no Instagram.",4000);}).catch(function(){showToast("Copie: "+txt.substring(0,60)+"...",5000);});
-}
-function copyLink(url){
-  navigator.clipboard.writeText(url).then(function(){showToast("🔗 Link copiado!",3000);}).catch(function(){showToast("Link: "+url,5000);});
-}
+function getHook(cat){var m={ia:"A",dados:"A",automacao:"B",tecnologia:"B",negocios:"C"};return HOOKS[m[cat]||"A"];}
+
+function shareWA(titulo,url){window.open("https://wa.me/?text="+encodeURIComponent("🤖 *"+titulo+"*
+
+Li no SentineIA — o portal de IA e tecnologia para empreendedores.
+
+🔗 "+url+"
+
+_SentineIA · por WL Soluções_"),"_blank");}
+function shareLI(url){window.open("https://www.linkedin.com/sharing/share-offsite/?url="+encodeURIComponent(url),"_blank");}
+function shareIG(titulo){var txt=titulo+"
+
+#IA #Tecnologia #PME #Automação #Dashboard #PowerBI #WLSoluções #SentineIA
+
+(Link na bio — SentineIA)";navigator.clipboard.writeText(txt).then(function(){showToast("📋 Texto copiado! Cole no Instagram.",4000);}).catch(function(){showToast("Copie o texto do compartilhamento",3000);});}
+function copyLink(url){navigator.clipboard.writeText(url).then(function(){showToast("🔗 Link copiado!",3000);}).catch(function(){showToast("Link: "+url,4000);});}
 
 function buildShareBar(n){
   var url=SITE_URL+"#noticia-"+n.id;
   return '<div class="share-bar"><span class="share-label">Compartilhar:</span>'
-    +'<button class="share-btn share-wa" data-id="'+n.id+'">📱 WhatsApp</button>'
-    +'<button class="share-btn share-li" data-id="'+n.id+'">💼 LinkedIn</button>'
-    +'<button class="share-btn share-ig" data-id="'+n.id+'">📸 Instagram</button>'
-    +'<button class="share-btn share-copy" data-id="'+n.id+'">🔗 Copiar link</button>'
+    +'<button class="share-btn share-wa swa-'+n.id+'">📱 WhatsApp</button>'
+    +'<button class="share-btn share-li sli-'+n.id+'">💼 LinkedIn</button>'
+    +'<button class="share-btn share-ig sig-'+n.id+'">📸 Instagram</button>'
+    +'<button class="share-btn share-copy scp-'+n.id+'">🔗 Copiar</button>'
     +'</div>';
 }
 
-function bindShareButtons(container,n){
+function bindShare(container,n){
   var url=SITE_URL+"#noticia-"+n.id;
-  var btn;
-  btn=container.querySelector(".share-wa[data-id='"+n.id+"']");
-  if(btn)btn.addEventListener("click",function(e){e.stopPropagation();shareWA(n.titulo,url);});
-  btn=container.querySelector(".share-li[data-id='"+n.id+"']");
-  if(btn)btn.addEventListener("click",function(e){e.stopPropagation();shareLI(n.titulo,url);});
-  btn=container.querySelector(".share-ig[data-id='"+n.id+"']");
-  if(btn)btn.addEventListener("click",function(e){e.stopPropagation();shareIG(n.titulo);});
-  btn=container.querySelector(".share-copy[data-id='"+n.id+"']");
-  if(btn)btn.addEventListener("click",function(e){e.stopPropagation();copyLink(url);});
+  var b;
+  b=container.querySelector(".swa-"+n.id);if(b)b.addEventListener("click",function(e){e.stopPropagation();shareWA(n.titulo,url);});
+  b=container.querySelector(".sli-"+n.id);if(b)b.addEventListener("click",function(e){e.stopPropagation();shareLI(url);});
+  b=container.querySelector(".sig-"+n.id);if(b)b.addEventListener("click",function(e){e.stopPropagation();shareIG(n.titulo);});
+  b=container.querySelector(".scp-"+n.id);if(b)b.addEventListener("click",function(e){e.stopPropagation();copyLink(url);});
 }
 
-function getHook(cat){var m={ia:"A",dados:"A",automacao:"B",tecnologia:"B",negocios:"C"};return HOOKS[m[cat]||"A"];}
-function goTo(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});}
-function filterCat(cat){activeFilter=cat;visible=6;document.querySelectorAll(".fbtn").forEach(function(b){b.classList.toggle("on",b.dataset.cat===cat);});goTo("noticias");renderCards();}
+// ── TAG CLOUD ──
+function buildTagCloud(){
+  var counts={};
+  ALL_NEWS.forEach(function(n){(n.tags||[]).forEach(function(t){counts[t]=(counts[t]||0)+1;});});
+  var extraTags=["Projects","BI","Dashboards","Segurança","LGPD","WhatsApp Business","Apps","Planejamento","Gestão","Inovação"];
+  extraTags.forEach(function(t){if(!counts[t])counts[t]=0;});
+  var allTags=Object.keys(counts).sort();
+  var cloud=document.getElementById("tag-cloud");
+  cloud.innerHTML="";
+  allTags.forEach(function(tag){
+    var pill=document.createElement("button");
+    pill.className="tag-pill";
+    pill.innerHTML=tag+(counts[tag]>0?'<span class="tag-count">('+counts[tag]+')</span>':'');
+    pill.addEventListener("click",function(){filterByTag(tag);});
+    cloud.appendChild(pill);
+  });
+}
+
+function filterByTag(tag){
+  activeTag=tag;
+  activeFilter="all";
+  visible=6;
+  document.querySelectorAll(".fbtn").forEach(function(b){b.classList.toggle("on",b.dataset.cat==="all");});
+  document.querySelectorAll(".tag-pill").forEach(function(p){p.classList.toggle("tag-active",p.textContent.startsWith(tag));});
+  var banner=document.getElementById("tag-filter-banner");
+  document.getElementById("tag-filter-label").textContent='🔍 Filtrando por: #'+tag;
+  banner.classList.add("show");
+  goTo("noticias");
+  renderCards();
+}
+
+function clearTagFilter(){
+  activeTag=null;
+  document.querySelectorAll(".tag-pill").forEach(function(p){p.classList.remove("tag-active");});
+  document.getElementById("tag-filter-banner").classList.remove("show");
+  renderCards();
+}
+
+function filterCat(cat){
+  activeFilter=cat;activeTag=null;visible=6;
+  document.querySelectorAll(".fbtn").forEach(function(b){b.classList.toggle("on",b.dataset.cat===cat);});
+  document.querySelectorAll(".tag-pill").forEach(function(p){p.classList.remove("tag-active");});
+  document.getElementById("tag-filter-banner").classList.remove("show");
+  goTo("noticias");renderCards();
+}
 function loadMore(){visible+=3;renderCards();}
+
+function getFilteredNews(){
+  var list=ALL_NEWS;
+  if(activeTag){list=list.filter(function(n){return(n.tags||[]).indexOf(activeTag)>=0;});}
+  else if(activeFilter!=="all"){list=list.filter(function(n){return n.categoria===activeFilter;});}
+  return list;
+}
+
+function buildTagsHtml(tags,cls){
+  if(!tags||!tags.length)return"";
+  return'<div class="'+cls+'">'+(tags||[]).map(function(t){return'<span class="nc-tag tg-'+t.replace(/ /g,"-")+'">'+t+'</span>';}).join("")+'</div>';
+}
 
 function renderFeatured(){
   var n=ALL_NEWS.find(function(x){return x.destaque;})||ALL_NEWS[0];
   var cat=CAT[n.categoria]||n.categoria;var emo=EMO[n.categoria]||"🔬";
-  var html='<div class="featured-card" id="feat-click"><div class="fi2"><div style="font-size:5rem">'+emo+'</div><span class="fb2">⭐ Destaque</span></div>'
+  var tagsHtml=(n.tags||[]).map(function(t){return'<span class="feat-tag tg-'+t.replace(/ /g,"-")+'">'+t+'</span>';}).join("");
+  var html='<div class="featured-card" id="feat-click">'
+    +'<div class="fi2"><div style="font-size:6rem">'+emo+'</div><span class="fb2">⭐ Destaque</span></div>'
     +'<div class="fbd"><div class="fc2">📂 '+cat+'</div><h2>'+n.titulo+'</h2><p>'+(n.subtitulo||n.resumo)+'</p>'
+    +(tagsHtml?'<div class="feat-tags">'+tagsHtml+'</div>':'')
     +'<div class="fm"><span>📅 '+fmtDate(n.data)+'</span><button class="frb" id="feat-read">Ler completo →</button></div>'
     +buildShareBar(n)+'</div></div>';
   document.getElementById("featured-container").innerHTML=html;
   document.getElementById("feat-click").addEventListener("click",function(){openModal(n.id);});
   document.getElementById("feat-read").addEventListener("click",function(e){e.stopPropagation();openModal(n.id);});
-  bindShareButtons(document.getElementById("featured-container"),n);
+  bindShare(document.getElementById("featured-container"),n);
+  document.querySelectorAll("#featured-container .feat-tag").forEach(function(el){
+    el.addEventListener("click",function(e){e.stopPropagation();var t=el.textContent;filterByTag(t);});
+  });
   document.getElementById("last-update").textContent="Atualizado: "+fmtDate(n.data);
 }
 
 function renderCards(){
   var grid=document.getElementById("news-grid");
-  var list=activeFilter==="all"?ALL_NEWS:ALL_NEWS.filter(function(n){return n.categoria===activeFilter;});
+  var list=getFilteredNews();
   var show=list.slice(0,visible);
   grid.innerHTML="";
-  if(!show.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--text2)">Nenhuma notícia nessa categoria.</div>';document.getElementById("load-more").style.display="none";return;}
+  if(!show.length){
+    grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--text2);font-size:.95rem">'+(activeTag?'Nenhuma notícia com a tag <strong style="color:var(--cyan)">#'+activeTag+'</strong> ainda.':'Nenhuma notícia nessa categoria.')+'</div>';
+    document.getElementById("load-more").style.display="none";return;
+  }
   show.forEach(function(n){
     var emo=EMO[n.categoria]||"🔬";var cat=CAT[n.categoria]||n.categoria;
     var el=document.createElement("div");el.className="nc";el.dataset.id=n.id;el.id="noticia-"+n.id;
     el.innerHTML='<div class="nc-img"><div>'+emo+'</div><span class="nc-badge">'+cat+'</span></div>'
       +'<div class="nc-body"><div class="nc-cat">📂 '+cat+'</div><h3>'+n.titulo+'</h3><p>'+n.resumo+'</p>'
+      +buildTagsHtml(n.tags,"nc-tags")
       +'<div class="nc-meta"><span>📅 '+fmtDate(n.data)+'</span><button class="rmbtn nc-read">Ler mais →</button></div>'
       +buildShareBar(n)+'</div>';
     el.addEventListener("click",function(){openModal(n.id);});
     el.querySelector(".nc-read").addEventListener("click",function(e){e.stopPropagation();openModal(n.id);});
-    bindShareButtons(el,n);
+    el.querySelectorAll(".nc-tag").forEach(function(tEl){
+      tEl.addEventListener("click",function(e){e.stopPropagation();filterByTag(tEl.textContent);});
+    });
+    bindShare(el,n);
     grid.appendChild(el);
   });
   document.getElementById("load-more").style.display=visible<list.length?"inline-flex":"none";
@@ -517,17 +638,21 @@ function renderSidebar(){
 
 function openModal(id){
   var n=ALL_NEWS.find(function(x){return x.id===id;});if(!n)return;
+  var tagsHtml=(n.tags||[]).map(function(t){return'<span class="modal-tag tg-'+t.replace(/ /g,"-")+'">'+t+'</span>';}).join("");
   document.getElementById("m-title").textContent=n.titulo;
-  document.getElementById("m-meta").innerHTML='<span>📂 '+(CAT[n.categoria]||n.categoria)+'</span><span>📅 '+fmtDate(n.data)+'</span>';
+  document.getElementById("m-meta").innerHTML='<span>📂 '+(CAT[n.categoria]||n.categoria)+'</span><span>📅 '+fmtDate(n.data)+'</span>'+(tagsHtml?'<div class="modal-tags">'+tagsHtml+'</div>':'');
   document.getElementById("m-body").innerHTML=(n.corpo||"<p>"+n.resumo+"</p>")+getHook(n.categoria)+buildShareBar(n);
   document.getElementById("modal").classList.add("open");document.body.style.overflow="hidden";
-  bindShareButtons(document.getElementById("m-body"),n);
+  bindShare(document.getElementById("m-body"),n);
   document.querySelectorAll(".hcta").forEach(function(b){b.addEventListener("click",function(){closeModal();goTo("contato");});});
+  document.querySelectorAll(".mmeta .modal-tag").forEach(function(el){
+    el.addEventListener("click",function(){closeModal();filterByTag(el.textContent);});
+  });
 }
 function closeModal(){document.getElementById("modal").classList.remove("open");document.body.style.overflow="";}
 
 document.addEventListener("DOMContentLoaded",function(){
-  bindFooter();
+  buildTagCloud();
   document.getElementById("logo-btn").addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
   document.getElementById("nav-home").addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
   document.getElementById("nav-news").addEventListener("click",function(){goTo("noticias");});
@@ -535,6 +660,7 @@ document.addEventListener("DOMContentLoaded",function(){
   document.getElementById("nav-auto").addEventListener("click",function(){filterCat("automacao");});
   document.getElementById("nav-sobre").addEventListener("click",function(){goPage("sobre.html");});
   document.getElementById("nav-cta").addEventListener("click",function(){goTo("contato");});
+  document.getElementById("menu-btn").addEventListener("click",function(){document.getElementById("nav").classList.toggle("open");});
   document.getElementById("hero-news").addEventListener("click",function(){goTo("noticias");});
   document.getElementById("hero-cta").addEventListener("click",function(){goTo("contato");});
   document.getElementById("intro-sobre").addEventListener("click",function(){goPage("sobre.html");});
@@ -542,18 +668,28 @@ document.addEventListener("DOMContentLoaded",function(){
   document.querySelectorAll(".fbtn").forEach(function(btn){btn.addEventListener("click",function(){filterCat(btn.dataset.cat);});});
   document.getElementById("see-all").addEventListener("click",function(){filterCat("all");});
   document.getElementById("load-more").addEventListener("click",loadMore);
+  document.getElementById("tag-clear-btn").addEventListener("click",clearTagFilter);
   document.getElementById("wa-assinar").addEventListener("click",function(){openWA("Quero receber as notícias do SentineIA no WhatsApp!");});
-  document.querySelectorAll(".tag").forEach(function(t){t.addEventListener("click",function(){filterCat(t.dataset.cat);});});
   document.getElementById("wl-diag").addEventListener("click",function(){goTo("contato");});
   document.getElementById("wl-wa").addEventListener("click",function(){openWA("Olá! Quero saber mais sobre as soluções da WL.");});
   document.getElementById("ci-wa").addEventListener("click",function(){openWA("Olá! Vim pelo SentineIA.");});
+  document.getElementById("wa-float").addEventListener("click",function(){openWA();});
   document.getElementById("contact-form").addEventListener("submit",function(e){
     e.preventDefault();var btn=document.getElementById("sbtn");
     btn.textContent="Enviando...";btn.disabled=true;
-    setTimeout(function(){btn.textContent="✅ Enviado! Entraremos em contato.";btn.style.background="var(--cyan2)";showToast("🎉 A WL entra em contato logo!",5000);openWA("Olá! Acabei de preencher o formulário no SentineIA.");}  ,1200);
+    setTimeout(function(){btn.textContent="✅ Enviado! Entraremos em contato.";btn.style.background="var(--cyan2)";showToast("🎉 A WL entra em contato logo!",5000);openWA("Olá! Acabei de preencher o formulário no SentineIA.");},1200);
   });
   document.getElementById("m-close").addEventListener("click",closeModal);
   document.getElementById("modal").addEventListener("click",function(e){if(e.target===this)closeModal();});
+  // Footer
+  document.querySelectorAll(".ft-home").forEach(function(b){b.addEventListener("click",function(){goPage("index.html");});});
+  document.querySelectorAll(".ft-news").forEach(function(b){b.addEventListener("click",function(){goTo("noticias");});});
+  document.querySelectorAll(".ft-sobre").forEach(function(b){b.addEventListener("click",function(){goPage("sobre.html");});});
+  document.querySelectorAll(".ft-contato").forEach(function(b){b.addEventListener("click",function(){goTo("contato");});});
+  document.querySelectorAll(".ft-wa").forEach(function(b){b.addEventListener("click",function(){openWA();});});
+  document.querySelectorAll(".ft-ig").forEach(function(b){b.addEventListener("click",function(){showToast("Instagram em breve!");});});
+  document.querySelectorAll(".ft-li").forEach(function(b){b.addEventListener("click",function(){showToast("LinkedIn em breve!");});});
+  document.querySelectorAll(".ft-priv,.ft-terms,.ft-lgpd").forEach(function(b){b.addEventListener("click",function(){showToast("Em breve.");});});
   renderFeatured();renderCards();renderSidebar();
 });
 </script>
